@@ -1,5 +1,5 @@
 REM Copy headers
-xcopy /S %SRC_DIR%\include\gtest %LIBRARY_INC%
+xcopy /S %SRC_DIR%\include %LIBRARY_INC%
 
 REM Build and copy static libraries
 mkdir build_static
