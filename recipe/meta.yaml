@@ -17,7 +17,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 2
+  number: 3
   features:
     - vc9   # [win and py27]
     - vc10  # [win and py34]
@@ -42,6 +42,7 @@ test:
     - test -d ${PREFIX}/include/gtest  # [unix]
     - if exist %LIBRARY_BIN%\gtest.lib (exit 0) else (exit 1)  # [win]
     - if exist %LIBRARY_BIN%\gtest_main.lib (exit 0) else (exit 1)  # [win]
+    - if exist %LIBRARY_BIN%\gtest_dll.dll (exit 0) else (exit 1)  # [win]
     - if exist %LIBRARY_INC%\gtest (exit 0) else (exit 1)  # [win]
 
 about:
