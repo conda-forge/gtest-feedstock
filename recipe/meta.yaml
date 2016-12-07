@@ -49,7 +49,7 @@ about:
   home: https://github.com/google/googletest
   license: BSD 3-Clause
   license_family: BSD
-  license_file: LICENSE
+  license_file: googletest/LICENSE
   summary: Google's C++ test framework
 
 extra:
