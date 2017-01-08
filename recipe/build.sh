@@ -15,18 +15,9 @@ cp libgtest_main.a $PREFIX/lib/
 cd $GTEST_DIR
 
 # Build and copy dynamic libraries
-UNAME="$(uname)"
-if [ "${UNAME}" == "Darwin" ]; then
-  # for OS X
-  LIBEXT="dylib"
-else
-  # for Linux
-  LIBEXT="so"
-fi
-
 mkdir build_dynamic
 cd build_dynamic
 cmake $GTEST_DIR -Dgtest_build_tests=ON
 make
-cp libgtest_dll.$LIBEXT $PREFIX/lib/
+cp libgtest_dll${SHLIB_EXT} $PREFIX/lib/
 cd $GTEST_DIR
