@@ -38,14 +38,19 @@ test:
     - python 3.6.*  # [win and py36]
 
   commands:
-    - test -f ${PREFIX}/lib/libgtest.a  # [unix]
-    - test -f ${PREFIX}/lib/libgtest_main.a  # [unix]
-    - test -f ${PREFIX}/lib/libgtest_dll.{{ libext }}  # [unix]
-    - test -d ${PREFIX}/include/gtest  # [unix]
-    - if exist %LIBRARY_BIN%\gtest.lib (exit 0) else (exit 1)  # [win]
-    - if exist %LIBRARY_BIN%\gtest_main.lib (exit 0) else (exit 1)  # [win]
-    - if exist %LIBRARY_BIN%\gtest_dll.dll (exit 0) else (exit 1)  # [win]
-    - if exist %LIBRARY_INC%\gtest (exit 0) else (exit 1)  # [win]
+    - test -f ${PREFIX}/lib/libgtest.a                      # [unix]
+    - test -f ${PREFIX}/lib/libgtest_main.a                 # [unix]
+    - test -f ${PREFIX}/lib/libgtest_dll.{{ libext }}       # [unix]
+    - test -d ${PREFIX}/include/gtest                       # [unix]
+    - if not exist %LIBRARY_BIN%\gtest.lib exit 1           # [win]
+    - if not exist %LIBRARY_BIN%\gtest_main.lib exit 1      # [win]
+    - if not exist %LIBRARY_BIN%\gtest_dll.dll exit 1       # [win]
+    - if not exist %LIBRARY_BIN%\gtest_md.lib exit 1        # [win]
+    - if not exist %LIBRARY_BIN%\gtest_md.lib exit 1        # [win]
+    - if not exist %LIBRARY_BIN%\gtest_main_md.lib exit 1   # [win]
+    - if not exist %LIBRARY_BIN%\gtest_dll_md.dll exit 1    # [win]
+    - if not exist %LIBRARY_BIN%\gtest_dll_md.lib exit 1    # [win]
+    - if not exist %LIBRARY_INC%\gtest exit 1               # [win]
 
 about:
   home: https://github.com/google/googletest
