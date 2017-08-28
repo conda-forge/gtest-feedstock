@@ -18,8 +18,8 @@ mkdir build_static_md
 cd build_static_md
 cmake -G "NMake Makefiles" -D gtest_force_shared_crt=ON -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -D CMAKE_BUILD_TYPE=Release %GTEST_DIR%
 nmake
-copy gtest.lib %LIBRARY_BIN%\gtest_md.lib
-copy gtest_main.lib %LIBRARY_BIN%\gtest_main_md.lib
+copy gtest.lib %LIBRARY_BIN%\gtest-md.lib
+copy gtest_main.lib %LIBRARY_BIN%\gtest_main-md.lib
 if errorlevel 1 exit 1
 cd %GTEST_DIR%
 
@@ -40,7 +40,7 @@ cd build_dynamic_md
 
 cmake -G "NMake Makefiles" -D gtest_force_shared_crt=ON -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -D CMAKE_BUILD_TYPE=Release -D gtest_build_tests=ON %GTEST_DIR%
 nmake gtest_dll
-copy gtest_dll.dll %LIBRARY_BIN%\gtest_dll_md.dll
-copy gtest_dll.lib %LIBRARY_BIN%\gtest_dll_md.lib
+copy gtest_dll.dll %LIBRARY_BIN%\gtest_dll-md.dll
+copy gtest_dll.lib %LIBRARY_BIN%\gtest_dll-md.lib
 if errorlevel 1 exit 1
 cd %GTEST_DIR%
