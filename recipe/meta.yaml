@@ -17,7 +17,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1
   skip: True  # [(unix and not py35) or (win and py36)]
   features:
     - vc9   # [win and py27]
