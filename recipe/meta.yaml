@@ -45,6 +45,7 @@ test:
     - if not exist %LIBRARY_BIN%\gtest.lib exit 1           # [win]
     - if not exist %LIBRARY_BIN%\gtest_main.lib exit 1      # [win]
     - if not exist %LIBRARY_BIN%\gtest_dll.dll exit 1       # [win]
+    - if not exist %LIBRARY_BIN%\gtest_dll.lib exit 1       # [win]
     - if not exist %LIBRARY_BIN%\gtest-md.lib exit 1        # [win]
     - if not exist %LIBRARY_BIN%\gtest_main-md.lib exit 1   # [win]
     - if not exist %LIBRARY_BIN%\gtest_dll-md.dll exit 1    # [win]
