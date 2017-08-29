@@ -17,7 +17,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 2
   skip: True  # [(unix and not py35) or (win and py36)]
   features:
     - vc9   # [win and py27]
@@ -45,11 +45,11 @@ test:
     - if not exist %LIBRARY_BIN%\gtest.lib exit 1           # [win]
     - if not exist %LIBRARY_BIN%\gtest_main.lib exit 1      # [win]
     - if not exist %LIBRARY_BIN%\gtest_dll.dll exit 1       # [win]
-    - if not exist %LIBRARY_BIN%\gtest_md.lib exit 1        # [win]
-    - if not exist %LIBRARY_BIN%\gtest_md.lib exit 1        # [win]
-    - if not exist %LIBRARY_BIN%\gtest_main_md.lib exit 1   # [win]
-    - if not exist %LIBRARY_BIN%\gtest_dll_md.dll exit 1    # [win]
-    - if not exist %LIBRARY_BIN%\gtest_dll_md.lib exit 1    # [win]
+    - if not exist %LIBRARY_BIN%\gtest_dll.lib exit 1       # [win]
+    - if not exist %LIBRARY_BIN%\gtest-md.lib exit 1        # [win]
+    - if not exist %LIBRARY_BIN%\gtest_main-md.lib exit 1   # [win]
+    - if not exist %LIBRARY_BIN%\gtest_dll-md.dll exit 1    # [win]
+    - if not exist %LIBRARY_BIN%\gtest_dll-md.lib exit 1    # [win]
     - if not exist %LIBRARY_INC%\gtest exit 1               # [win]
 
 about:
