@@ -17,7 +17,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 2
+  number: 3
   skip: True  # [(unix and not py35) or (win and py36)]
   features:
     - vc9   # [win and py27]
@@ -43,13 +43,21 @@ test:
     - test -f ${PREFIX}/lib/libgtest_dll.{{ libext }}       # [unix]
     - test -d ${PREFIX}/include/gtest                       # [unix]
     - if not exist %LIBRARY_BIN%\gtest.lib exit 1           # [win]
+    - if not exist %LIBRARY_BIN%\gtestd.lib exit 1          # [win]
     - if not exist %LIBRARY_BIN%\gtest_main.lib exit 1      # [win]
+    - if not exist %LIBRARY_BIN%\gtest_maind.lib exit 1     # [win]
     - if not exist %LIBRARY_BIN%\gtest_dll.dll exit 1       # [win]
+    - if not exist %LIBRARY_BIN%\gtest_dlld.dll exit 1      # [win]
     - if not exist %LIBRARY_BIN%\gtest_dll.lib exit 1       # [win]
+    - if not exist %LIBRARY_BIN%\gtest_dlld.lib exit 1      # [win]
     - if not exist %LIBRARY_BIN%\gtest-md.lib exit 1        # [win]
+    - if not exist %LIBRARY_BIN%\gtest-mdd.lib exit 1       # [win]
     - if not exist %LIBRARY_BIN%\gtest_main-md.lib exit 1   # [win]
+    - if not exist %LIBRARY_BIN%\gtest_main-mdd.lib exit 1  # [win]
     - if not exist %LIBRARY_BIN%\gtest_dll-md.dll exit 1    # [win]
+    - if not exist %LIBRARY_BIN%\gtest_dll-mdd.dll exit 1   # [win]
     - if not exist %LIBRARY_BIN%\gtest_dll-md.lib exit 1    # [win]
+    - if not exist %LIBRARY_BIN%\gtest_dll-mdd.lib exit 1   # [win]
     - if not exist %LIBRARY_INC%\gtest exit 1               # [win]
 
 about:
