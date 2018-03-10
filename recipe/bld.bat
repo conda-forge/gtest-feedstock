@@ -20,8 +20,8 @@ mkdir build_static_mtd
 cd build_static_mtd
 cmake -G "NMake Makefiles" -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -D CMAKE_BUILD_TYPE=Debug %GTEST_DIR%
 nmake
-copy gtestd.lib %LIBRARY_BIN%
-copy gtest_maind.lib %LIBRARY_BIN%
+copy gtest.lib %LIBRARY_BIN%\gtestd.lib
+copy gtest_main.lib %LIBRARY_BIN%\gtest_maind.lib
 if errorlevel 1 exit 1
 cd %GTEST_DIR%
 
@@ -40,8 +40,8 @@ mkdir build_static_mdd
 cd build_static_mdd
 cmake -G "NMake Makefiles" -D gtest_force_shared_crt=ON -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -D CMAKE_BUILD_TYPE=Debug %GTEST_DIR%
 nmake
-copy gtestd.lib %LIBRARY_BIN%\gtest-mdd.lib
-copy gtest_maind.lib %LIBRARY_BIN%\gtest_main-mdd.lib
+copy gtest.lib %LIBRARY_BIN%\gtest-mdd.lib
+copy gtest_main.lib %LIBRARY_BIN%\gtest_main-mdd.lib
 if errorlevel 1 exit 1
 cd %GTEST_DIR%
 
@@ -59,9 +59,9 @@ REM Build and copy dynamic libraries (Debug)
 mkdir build_dynamic_mtd
 cd build_dynamic_mtd
 cmake -G "NMake Makefiles" -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -D CMAKE_BUILD_TYPE=Debug -D gtest_build_tests=ON %GTEST_DIR%
-nmake gtest_dlld
-copy gtest_dlld.dll %LIBRARY_BIN%
-copy gtest_dlld.lib %LIBRARY_BIN%
+nmake gtest_dll
+copy gtest_dll.dll %LIBRARY_BIN%\gtest_dlld.dll
+copy gtest_dll.lib %LIBRARY_BIN%\gtest_dlld.lib
 if errorlevel 1 exit 1
 cd %GTEST_DIR%
 
@@ -80,7 +80,7 @@ mkdir build_dynamic_mdd
 cd build_dynamic_mdd
 cmake -G "NMake Makefiles" -D gtest_force_shared_crt=ON -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -D CMAKE_BUILD_TYPE=Debug -D gtest_build_tests=ON %GTEST_DIR%
 nmake gtest_dll
-copy gtest_dlld.dll %LIBRARY_BIN%\gtest_dll-mdd.dll
-copy gtest_dlld.lib %LIBRARY_BIN%\gtest_dll-mdd.lib
+copy gtest_dll.dll %LIBRARY_BIN%\gtest_dll-mdd.dll
+copy gtest_dll.lib %LIBRARY_BIN%\gtest_dll-mdd.lib
 if errorlevel 1 exit 1
 cd %GTEST_DIR%
