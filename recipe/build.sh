@@ -18,6 +18,6 @@ cd $GTEST_DIR
 mkdir build_dynamic
 cd build_dynamic
 cmake $GTEST_DIR -Dgtest_build_tests=ON
-make
+make -j${CPU_COUNT} ${VERBOSE_CM}
 cp libgtest_dll${SHLIB_EXT} $PREFIX/lib/
 cd $GTEST_DIR
