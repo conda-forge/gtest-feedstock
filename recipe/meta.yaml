@@ -26,8 +26,9 @@ build:
 
 requirements:
   build:
-    - toolchain
-    - python
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
     - cmake
 
 test:
