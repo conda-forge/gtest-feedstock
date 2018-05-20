@@ -17,12 +17,8 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 3
-  skip: True  # [(unix and not py35) or (win and py36)]
-  features:
-    - vc9   # [win and py27]
-    - vc10  # [win and py34]
-    - vc14  # [win and (py35 or py36)]
+  number: 4
+  detect_binary_files_with_prefix: False # [win]
 
 requirements:
   build:
@@ -32,11 +28,6 @@ requirements:
     - cmake
 
 test:
-  requires:
-    - python 2.7.*  # [win and py27]
-    - python 3.4.*  # [win and py34]
-    - python 3.5.*  # [win and py35]
-    - python 3.6.*  # [win and py36]
 
   commands:
     - test -f ${PREFIX}/lib/libgtest.a                      # [unix]
