@@ -20,6 +20,7 @@ requirements:
     - {{ compiler('cxx') }}
   host:
     - cmake
+    - make  # [unix]
 
 test:
 
