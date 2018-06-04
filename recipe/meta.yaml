@@ -17,7 +17,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 3
+  number: 4
   skip: True  # [(unix and not py35) or (win and py36)]
   features:
     - vc9   # [win and py27]
@@ -26,7 +26,7 @@ build:
 
 requirements:
   build:
-    - toolchain
+    - {{ compiler('cxx') }}
     - python
     - cmake
 
@@ -71,3 +71,4 @@ extra:
   recipe-maintainers:
     - SylvainCorlay
     - scopatz
+    - wesm

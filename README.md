@@ -14,14 +14,16 @@ Summary: Google's C++ test framework
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/gtest-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/gtest-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/gtest-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/gtest-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/gtest-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/gtest-feedstock/branch/master)
+[![Windows](https://img.shields.io/appveyor/ci/conda-forge/gtest-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/gtest-feedstock/branch/master)
+![Linux disabled](https://img.shields.io/badge/linux-disabled-lightgrey.svg)
+![OSX disabled](https://img.shields.io/badge/OSX-disabled-lightgrey.svg)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/gtest/badges/version.svg)](https://anaconda.org/conda-forge/gtest)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/gtest/badges/downloads.svg)](https://anaconda.org/conda-forge/gtest)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-gtest-green.svg)](https://anaconda.org/conda-forge/gtest) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/gtest.svg)](https://anaconda.org/conda-forge/gtest) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/gtest.svg)](https://anaconda.org/conda-forge/gtest) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/gtest.svg)](https://anaconda.org/conda-forge/gtest) |
 
 Installing gtest
 ================
