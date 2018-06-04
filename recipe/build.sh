@@ -1,6 +1,7 @@
 #!/bin/bash
 
 GTEST_DIR=$SRC_DIR/googletest
+GTEST_CXXFLAGS="-fPIC"
 
 # Copy headers
 cp -r $GTEST_DIR/include/gtest $PREFIX/include/
@@ -8,7 +9,7 @@ cp -r $GTEST_DIR/include/gtest $PREFIX/include/
 # Build and copy static libraries
 mkdir build_static
 cd build_static
-cmake $GTEST_DIR
+cmake -DCMAKE_CXX_FLAGS=${GTEST_CXXFLAGS} $GTEST_DIR
 make
 cp libgtest.a $PREFIX/lib/
 cp libgtest_main.a $PREFIX/lib/
