@@ -18,11 +18,6 @@ source:
 
 build:
   number: 4
-  skip: True  # [(unix and not py35) or (win and py36)]
-  features:
-    - vc9   # [win and py27]
-    - vc10  # [win and py34]
-    - vc14  # [win and (py35 or py36)]
 
 requirements:
   build:
@@ -31,16 +26,10 @@ requirements:
     - cmake
 
 test:
-  requires:
-    - python 2.7.*  # [win and py27]
-    - python 3.4.*  # [win and py34]
-    - python 3.5.*  # [win and py35]
-    - python 3.6.*  # [win and py36]
-
   commands:
     - test -f ${PREFIX}/lib/libgtest.a                      # [unix]
     - test -f ${PREFIX}/lib/libgtest_main.a                 # [unix]
-    - test -f ${PREFIX}/lib/libgtest_dll.{{ libext }}       # [unix]
+    - test -f ${PREFIX}/lib/libgtest.{{ libext }}           # [unix]
     - test -d ${PREFIX}/include/gtest                       # [unix]
     - if not exist %LIBRARY_LIB%\gtest.lib exit 1           # [win]
     - if not exist %LIBRARY_LIB%\gtestd.lib exit 1          # [win]

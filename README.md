@@ -14,9 +14,9 @@ Summary: Google's C++ test framework
 Current build status
 ====================
 
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/gtest-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/gtest-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/gtest-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/gtest-feedstock)
 [![Windows](https://img.shields.io/appveyor/ci/conda-forge/gtest-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/gtest-feedstock/branch/master)
-![Linux disabled](https://img.shields.io/badge/linux-disabled-lightgrey.svg)
-![OSX disabled](https://img.shields.io/badge/OSX-disabled-lightgrey.svg)
 
 Current release info
 ====================
