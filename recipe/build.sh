@@ -3,22 +3,18 @@
 GTEST_DIR=$SRC_DIR/googletest
 GTEST_CXXFLAGS="-fPIC"
 
-# Copy headers
-cp -r $GTEST_DIR/include/gtest $PREFIX/include/
-
-# Build and copy static libraries
-mkdir build_static
-cd build_static
-cmake -DCMAKE_CXX_FLAGS=${GTEST_CXXFLAGS} $GTEST_DIR
+# Build and install static libraries
+mkdir build_a
+cd build_a
+cmake -DCMAKE_CXX_FLAGS=${GTEST_CXXFLAGS} -DCMAKE_INSTALL_PREFIX=$PREFIX $GTEST_DIR
 make
-cp libgtest.a $PREFIX/lib/
-cp libgtest_main.a $PREFIX/lib/
+make install
 cd $GTEST_DIR
 
-# Build and copy dynamic libraries
-mkdir build_dynamic
-cd build_dynamic
-cmake $GTEST_DIR -Dgtest_build_tests=ON
+# Build and install dynamic library
+mkdir build_so
+cd build_so
+cmake -DCMAKE_CXX_FLAGS=${GTEST_CXXFLAGS} -DCMAKE_INSTALL_PREFIX=$PREFIX -DBUILD_SHARED_LIBS=ON $GTEST_DIR
 make
-cp libgtest_dll${SHLIB_EXT} $PREFIX/lib/
+make install
 cd $GTEST_DIR
