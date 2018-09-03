@@ -20,8 +20,8 @@ mkdir build_static_mtd
 cd build_static_mtd
 cmake -G "%CMAKE_GENERATOR%" -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" %GTEST_DIR%
 cmake --build . --target ALL_BUILD --config Debug
-copy Debug\gtest.lib %LIBRARY_LIB%\gtestd.lib
-copy Debug\gtest_main.lib %LIBRARY_LIB%\gtest_maind.lib
+copy Debug\gtestd.lib %LIBRARY_LIB%\gtestd.lib
+copy Debug\gtest_maind.lib %LIBRARY_LIB%\gtest_maind.lib
 if errorlevel 1 exit 1
 cd %GTEST_DIR%
 
@@ -40,8 +40,8 @@ mkdir build_static_mdd
 cd build_static_mdd
 cmake -G "%CMAKE_GENERATOR%" -D gtest_force_shared_crt=ON -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" %GTEST_DIR%
 cmake --build . --target ALL_BUILD --config Debug
-copy Debug\gtest.lib %LIBRARY_LIB%\gtest-mdd.lib
-copy Debug\gtest_main.lib %LIBRARY_LIB%\gtest_main-mdd.lib
+copy Debug\gtestd.lib %LIBRARY_LIB%\gtest-mdd.lib
+copy Debug\gtest_maind.lib %LIBRARY_LIB%\gtest_main-mdd.lib
 if errorlevel 1 exit 1
 cd %GTEST_DIR%
 
@@ -60,8 +60,8 @@ mkdir build_dynamic_mtd
 cd build_dynamic_mtd
 cmake -G "%CMAKE_GENERATOR%" -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -D gtest_build_tests=ON -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" %GTEST_DIR%
 cmake --build . --target gtest_dll --config Debug
-copy Debug\gtest_dll.dll %LIBRARY_BIN%\gtest_dlld.dll
-copy Debug\gtest_dll.lib %LIBRARY_LIB%\gtest_dlld.lib
+copy Debug\gtest_dlld.dll %LIBRARY_BIN%\gtest_dlld.dll
+copy Debug\gtest_dlld.lib %LIBRARY_LIB%\gtest_dlld.lib
 if errorlevel 1 exit 1
 cd %GTEST_DIR%
 
@@ -80,8 +80,8 @@ mkdir build_dynamic_mdd
 cd build_dynamic_mdd
 cmake -G "%CMAKE_GENERATOR%" -D gtest_force_shared_crt=ON -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -D gtest_build_tests=ON -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" %GTEST_DIR%
 cmake --build . --target gtest_dll --config Debug
-copy Debug\gtest_dll.dll %LIBRARY_BIN%\gtest_dll-mdd.dll
-copy Debug\gtest_dll.lib %LIBRARY_LIB%\gtest_dll-mdd.lib
+copy Debug\gtest_dlld.dll %LIBRARY_BIN%\gtest_dll-mdd.dll
+copy Debug\gtest_dlld.lib %LIBRARY_LIB%\gtest_dll-mdd.lib
 if errorlevel 1 exit 1
 cd %GTEST_DIR%
 
