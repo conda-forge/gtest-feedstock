@@ -12,14 +12,13 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1000
+  number: 1001
 
 requirements:
   build:
     - {{ compiler('cxx') }}
     - python
     - cmake
-    
   host: []  # Empty host dependency section
 
 test:
