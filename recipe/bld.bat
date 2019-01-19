@@ -1,7 +1,8 @@
-set GTEST_DIR=%SRC_DIR%\googletest
+set GTEST_DIR=%SRC_DIR%
 
 REM Copy headers
-xcopy /S %GTEST_DIR%\include %LIBRARY_INC%
+xcopy /S %GTEST_DIR%\googletest\include %LIBRARY_INC%
+xcopy /S %GTEST_DIR%\googlemock\include %LIBRARY_INC%
 
 cd %GTEST_DIR%
 
@@ -12,6 +13,8 @@ cmake -G "%CMAKE_GENERATOR%" -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -DCMAKE_PRE
 cmake --build . --target ALL_BUILD --config Release
 copy Release\gtest.lib %LIBRARY_LIB%
 copy Release\gtest_main.lib %LIBRARY_LIB%
+copy Release\gmock.lib %LIBRARY_LIB%
+copy Release\gmock_main.lib %LIBRARY_LIB%
 if errorlevel 1 exit 1
 cd %GTEST_DIR%
 
@@ -22,6 +25,8 @@ cmake -G "%CMAKE_GENERATOR%" -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -DCMAKE_PRE
 cmake --build . --target ALL_BUILD --config Debug
 copy Debug\gtestd.lib %LIBRARY_LIB%\gtestd.lib
 copy Debug\gtest_maind.lib %LIBRARY_LIB%\gtest_maind.lib
+copy Debug\gmockd.lib %LIBRARY_LIB%\gmockd.lib
+copy Debug\gmock_maind.lib %LIBRARY_LIB%\gmock_maind.lib
 if errorlevel 1 exit 1
 cd %GTEST_DIR%
 
@@ -32,6 +37,8 @@ cmake -G "%CMAKE_GENERATOR%" -D gtest_force_shared_crt=ON -D CMAKE_INSTALL_PREFI
 cmake --build . --target ALL_BUILD --config Release
 copy Release\gtest.lib %LIBRARY_LIB%\gtest-md.lib
 copy Release\gtest_main.lib %LIBRARY_LIB%\gtest_main-md.lib
+copy Release\gmock.lib %LIBRARY_LIB%\gmock-md.lib
+copy Release\gmock_main.lib %LIBRARY_LIB%\gmock_main-md.lib
 if errorlevel 1 exit 1
 cd %GTEST_DIR%
 
@@ -42,6 +49,8 @@ cmake -G "%CMAKE_GENERATOR%" -D gtest_force_shared_crt=ON -D CMAKE_INSTALL_PREFI
 cmake --build . --target ALL_BUILD --config Debug
 copy Debug\gtestd.lib %LIBRARY_LIB%\gtest-mdd.lib
 copy Debug\gtest_maind.lib %LIBRARY_LIB%\gtest_main-mdd.lib
+copy Debug\gmockd.lib %LIBRARY_LIB%\gmock-mdd.lib
+copy Debug\gmock_maind.lib %LIBRARY_LIB%\gmock_main-mdd.lib
 if errorlevel 1 exit 1
 cd %GTEST_DIR%
 
@@ -52,6 +61,8 @@ cmake -G "%CMAKE_GENERATOR%" -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -D gtest_b
 cmake --build . --target gtest_dll --config Release
 copy Release\gtest_dll.dll %LIBRARY_BIN%
 copy Release\gtest_dll.lib %LIBRARY_LIB%
+copy Release\gmock_dll.dll %LIBRARY_BIN%
+copy Release\gmock_dll.lib %LIBRARY_LIB%
 if errorlevel 1 exit 1
 cd %GTEST_DIR%
 
@@ -62,6 +73,8 @@ cmake -G "%CMAKE_GENERATOR%" -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -D gtest_b
 cmake --build . --target gtest_dll --config Debug
 copy Debug\gtest_dlld.dll %LIBRARY_BIN%\gtest_dlld.dll
 copy Debug\gtest_dlld.lib %LIBRARY_LIB%\gtest_dlld.lib
+copy Debug\gmock_dlld.dll %LIBRARY_BIN%\gmock_dlld.dll
+copy Debug\gmock_dlld.lib %LIBRARY_LIB%\gmock_dlld.lib
 if errorlevel 1 exit 1
 cd %GTEST_DIR%
 
@@ -72,6 +85,8 @@ cmake -G "%CMAKE_GENERATOR%" -D gtest_force_shared_crt=ON -D CMAKE_INSTALL_PREFI
 cmake --build . --target gtest_dll --config Release
 copy Release\gtest_dll.dll %LIBRARY_BIN%\gtest_dll-md.dll
 copy Release\gtest_dll.lib %LIBRARY_LIB%\gtest_dll-md.lib
+copy Release\gmock_dll.dll %LIBRARY_BIN%\gmock_dll-md.dll
+copy Release\gmock_dll.lib %LIBRARY_LIB%\gmock_dll-md.lib
 if errorlevel 1 exit 1
 cd %GTEST_DIR%
 
@@ -82,6 +97,8 @@ cmake -G "%CMAKE_GENERATOR%" -D gtest_force_shared_crt=ON -D CMAKE_INSTALL_PREFI
 cmake --build . --target gtest_dll --config Debug
 copy Debug\gtest_dlld.dll %LIBRARY_BIN%\gtest_dll-mdd.dll
 copy Debug\gtest_dlld.lib %LIBRARY_LIB%\gtest_dll-mdd.lib
-if errorlevel 1 exit 1
+copy Debug\gmock_dlld.dll %LIBRARY_BIN%\gmock_dll-mdd.dll
+copy Debug\gmock_dlld.lib %LIBRARY_LIB%\gmock_dll-mdd.lib
+if errorlevel 0 exit 1
 cd %GTEST_DIR%
 
