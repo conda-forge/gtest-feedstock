@@ -30,7 +30,6 @@ Current release info
 | [![Conda Recipe](https://img.shields.io/badge/recipe-gtest-green.svg)](https://anaconda.org/conda-forge/gtest) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/gtest.svg)](https://anaconda.org/conda-forge/gtest) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/gtest.svg)](https://anaconda.org/conda-forge/gtest) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/gtest.svg)](https://anaconda.org/conda-forge/gtest) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-gmock-green.svg)](https://anaconda.org/conda-forge/gmock) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/gmock.svg)](https://anaconda.org/conda-forge/gmock) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/gmock.svg)](https://anaconda.org/conda-forge/gmock) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/gmock.svg)](https://anaconda.org/conda-forge/gmock) |
 
-
 Installing gtest
 ================
 
