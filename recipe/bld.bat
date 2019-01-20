@@ -71,6 +71,7 @@ mkdir build_dynamic_mtd
 cd build_dynamic_mtd
 cmake -G "%CMAKE_GENERATOR%" -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -D gtest_build_tests=ON -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" %GTEST_DIR%
 cmake --build . --target gtest_dll --config Debug
+tree /F
 copy Debug\googletest\gtest_dlld.dll %LIBRARY_BIN%\gtest_dlld.dll
 copy Debug\googletest\gtest_dlld.lib %LIBRARY_LIB%\gtest_dlld.lib
 copy Debug\googlemock\gmock_dlld.dll %LIBRARY_BIN%\gmock_dlld.dll
