@@ -11,6 +11,7 @@ mkdir build_static_mt
 cd build_static_mt
 cmake -G "%CMAKE_GENERATOR%" -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" %GTEST_DIR%
 cmake --build . --target ALL_BUILD --config Release
+tree /F
 copy Release\gtest.lib %LIBRARY_LIB%
 copy Release\gtest_main.lib %LIBRARY_LIB%
 copy Release\gmock.lib %LIBRARY_LIB%
