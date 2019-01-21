@@ -73,10 +73,10 @@ cd build_dynamic_mtd
 cmake -G "%CMAKE_GENERATOR%" -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -D gtest_build_tests=ON -DBUILD_SHARED_LIBS=ON -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" %GTEST_DIR%
 cmake --build . --target ALL_BUILD --config Debug
 tree /f
-copy googlemock\gtest\Debug\googletest\gtest_dlld.dll %LIBRARY_BIN%\gtest_dlld.dll
+copy googlemock\gtest\Debug\gtest_dlld.dll %LIBRARY_BIN%\gtest_dlld.dll
 copy googlemock\gtest\Debug\gtest_dlld.lib %LIBRARY_LIB%\gtest_dlld.lib
-copy googlemock\Debug\gmock_dlld.dll %LIBRARY_BIN%\gmock_dlld.dll
-copy googlemock\Debug\gmock_dlld.lib %LIBRARY_LIB%\gmock_dlld.lib
+copy googlemock\Debug\gmockd.dll %LIBRARY_BIN%\gmock_dlld.lib
+copy googlemock\Debug\gmockd.lib %LIBRARY_LIB%\gmock_dlld.lib
 if errorlevel 1 exit 1
 cd %GTEST_DIR%
 
@@ -88,8 +88,8 @@ cmake --build . --target ALL_BUILD --config Release
 tree /f
 copy googlemock\gtest\Release\gtest_dll.dll %LIBRARY_BIN%\gtest_dll-md.dll
 copy googlemock\gtest\Release\gtest_dll.lib %LIBRARY_LIB%\gtest_dll-md.lib
-copy googlemock\Release\gmock.dll %LIBRARY_BIN%\gmock_dll-md.dll
-copy googlemock\Release\gmock.lib %LIBRARY_LIB%\gmock_dll-md.lib
+copy googlemock\Release\gmockd.dll %LIBRARY_BIN%\gmock_dll-md.dll
+copy googlemock\Release\gmockd.lib %LIBRARY_LIB%\gmock_dll-md.lib
 if errorlevel 1 exit 1
 cd %GTEST_DIR%
 
@@ -99,10 +99,10 @@ cd build_dynamic_mdd
 cmake -G "%CMAKE_GENERATOR%" -D gtest_force_shared_crt=ON -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -D gtest_build_tests=ON -DBUILD_SHARED_LIBS=ON  -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" %GTEST_DIR%
 cmake --build . --target ALL_BUILD --config Debug
 tree /f
-copy googlemock\gtest\Debug\googletest\gtest_dlld.dll %LIBRARY_BIN%\gtest_dll-mdd.dll
-copy googlemock\gtest\Debug\googletest\gtest_dlld.lib %LIBRARY_LIB%\gtest_dll-mdd.lib
-copy googlemock\Debug\googlemock\gmock_dlld.dll %LIBRARY_BIN%\gmock_dll-mdd.dll
-copy googlemock\Debug\googlemock\gmock_dlld.lib %LIBRARY_LIB%\gmock_dll-mdd.lib
+copy googlemock\gtest\Debug\gtest_dlld.dll %LIBRARY_BIN%\gtest_dll-mdd.dll
+copy googlemock\gtest\Debug\gtest_dlld.lib %LIBRARY_LIB%\gtest_dll-mdd.lib
+copy googlemock\Debug\gmockd.dll %LIBRARY_BIN%\gmock_dll-mdd.dll
+copy googlemock\Debug\gmockd.lib %LIBRARY_LIB%\gmock_dll-mdd.lib
 if errorlevel 0 exit 1
 cd %GTEST_DIR%
 
