@@ -79,7 +79,6 @@ mkdir build_dynamic_mtd
 cd build_dynamic_mtd
 cmake -G "%CMAKE_GENERATOR%" -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -D gtest_build_tests=ON -DBUILD_SHARED_LIBS=ON -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" %GTEST_DIR%
 cmake --build . --target ALL_BUILD --config Debug
-tree /f
 copy googlemock\gtest\Debug\gtest_dlld.dll %LIBRARY_BIN%\gtest_dlld.dll
 copy googlemock\gtest\Debug\gtest_dlld.lib %LIBRARY_LIB%\gtest_dlld.lib
 copy googlemock\Debug\gmockd.dll %LIBRARY_BIN%
@@ -92,7 +91,6 @@ mkdir build_dynamic_md
 cd build_dynamic_md
 cmake -G "%CMAKE_GENERATOR%" -D gtest_force_shared_crt=ON -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -D gtest_build_tests=ON -DBUILD_SHARED_LIBS=ON  -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" %GTEST_DIR%
 cmake --build . --target ALL_BUILD --config Release
-tree /f
 copy googlemock\gtest\Release\gtest_dll.dll %LIBRARY_BIN%\gtest_dll-md.dll
 copy googlemock\gtest\Release\gtest_dll.lib %LIBRARY_LIB%\gtest_dll-md.lib
 copy googlemock\Release\gmock.dll %LIBRARY_BIN%\gmock-md.dll
@@ -105,11 +103,10 @@ mkdir build_dynamic_mdd
 cd build_dynamic_mdd
 cmake -G "%CMAKE_GENERATOR%" -D gtest_force_shared_crt=ON -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -D gtest_build_tests=ON -DBUILD_SHARED_LIBS=ON  -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" %GTEST_DIR%
 cmake --build . --target ALL_BUILD --config Debug
-tree /f
 copy googlemock\gtest\Debug\gtest_dlld.dll %LIBRARY_BIN%\gtest_dll-mdd.dll
 copy googlemock\gtest\Debug\gtest_dlld.lib %LIBRARY_LIB%\gtest_dll-mdd.lib
 copy googlemock\Debug\gmockd.dll %LIBRARY_BIN%\gmockd-mdd.dll
 copy googlemock\Debug\gmockd.lib %LIBRARY_LIB%\gmockd-mdd.lib
-if errorlevel 0 exit 1
+if errorlevel 1 exit 1
 cd %GTEST_DIR%
 
