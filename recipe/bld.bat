@@ -3,7 +3,6 @@ REM gmock headers have a warning that doesnt exist in Visual Studio 2008
 REM and maintainers don't want to support older version 
 REM (https://github.com/google/googletest/issues/1848)
 if NOT "%VS_YEAR%" == "2008" GOTO NO_EDIT 
-powershell -Command "(gc googletest/include/gtest/gtest-matchers.h) -replace '4251 5046', '4251' | Out-File googletest/include/gtest/gtest-matchers.h"
 powershell -Command "(gc googlemock/include/gmock/gmock-matchers.h) -replace '4251 5046', '4251' | Out-File googlemock/include/gmock/gmock-matchers.h"
 
 :NO_EDIT

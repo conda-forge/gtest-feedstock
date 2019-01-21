@@ -61,7 +61,7 @@ outputs:
       -  lib/libgmock*                                          # [unix]
       -  Library\bin\gmock*                                     # [win]
       -  Library\lib\gmock*                                     # [win]
-      -  Library\include\gtest                                  # [win]
+      -  Library\include\gmock                                  # [win]
     test:
       commands:
         - test -f ${PREFIX}/lib/libgmock.a                      # [unix]
@@ -81,8 +81,8 @@ outputs:
         - if not exist %LIBRARY_LIB%\gmock_main-md.lib exit 1   # [win]
         - if not exist %LIBRARY_LIB%\gmock_main-mdd.lib exit 1  # [win]
         - if not exist %LIBRARY_BIN%\gmock-md.dll exit 1        # [win]
-        - if not exist %LIBRARY_BIN%\gmock-mdd.dll exit 1       # [win]
-        - if not exist %LIBRARY_LIB%\gmockd-md.lib exit 1       # [win]
+        - if not exist %LIBRARY_LIB%\gmock-md.lib exit 1        # [win]
+        - if not exist %LIBRARY_BIN%\gmockd-mdd.dll exit 1      # [win]
         - if not exist %LIBRARY_LIB%\gmockd-mdd.lib exit 1      # [win]
         - if not exist %LIBRARY_INC%\gmock exit 1               # [win]
 
