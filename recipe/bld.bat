@@ -1,5 +1,12 @@
 set GTEST_DIR=%SRC_DIR%
+REM gmock headers have a warning that doesnt exist in Visual Studio 2008 
+REM and maintainers don't want to support older version 
+REM (https://github.com/google/googletest/issues/1848)
+if NOT "%VS_YEAR%" == "2008" GOTO NO_EDIT 
+powershell -Command "(gc googletest/include/gtest/gtest-matchers.h) -replace '4251 5046', '4251' | Out-File googletest/include/gtest/gtest-matchers.h"
+powershell -Command "(gc googlemock/include/gmock/gmock-matchers.h) -replace '4251 5046', '4251' | Out-File googlemock/include/gmock/gmock-matchers.h"
 
+:NO_EDIT
 REM Copy headers
 xcopy /S %GTEST_DIR%\googletest\include %LIBRARY_INC%
 xcopy /S %GTEST_DIR%\googlemock\include %LIBRARY_INC%
@@ -75,8 +82,8 @@ cmake --build . --target ALL_BUILD --config Debug
 tree /f
 copy googlemock\gtest\Debug\gtest_dlld.dll %LIBRARY_BIN%\gtest_dlld.dll
 copy googlemock\gtest\Debug\gtest_dlld.lib %LIBRARY_LIB%\gtest_dlld.lib
-copy googlemock\Debug\gmockd.dll %LIBRARY_BIN%\gmock_dlld.lib
-copy googlemock\Debug\gmockd.lib %LIBRARY_LIB%\gmock_dlld.lib
+copy googlemock\Debug\gmockd.dll %LIBRARY_BIN%
+copy googlemock\Debug\gmockd.lib %LIBRARY_LIB%
 if errorlevel 1 exit 1
 cd %GTEST_DIR%
 
@@ -88,8 +95,8 @@ cmake --build . --target ALL_BUILD --config Release
 tree /f
 copy googlemock\gtest\Release\gtest_dll.dll %LIBRARY_BIN%\gtest_dll-md.dll
 copy googlemock\gtest\Release\gtest_dll.lib %LIBRARY_LIB%\gtest_dll-md.lib
-copy googlemock\Release\gmockd.dll %LIBRARY_BIN%\gmock_dll-md.dll
-copy googlemock\Release\gmockd.lib %LIBRARY_LIB%\gmock_dll-md.lib
+copy googlemock\Release\gmock.dll %LIBRARY_BIN%\gmock-md.dll
+copy googlemock\Release\gmock.lib %LIBRARY_LIB%\gmock-md.lib
 if errorlevel 1 exit 1
 cd %GTEST_DIR%
 
@@ -101,8 +108,8 @@ cmake --build . --target ALL_BUILD --config Debug
 tree /f
 copy googlemock\gtest\Debug\gtest_dlld.dll %LIBRARY_BIN%\gtest_dll-mdd.dll
 copy googlemock\gtest\Debug\gtest_dlld.lib %LIBRARY_LIB%\gtest_dll-mdd.lib
-copy googlemock\Debug\gmockd.dll %LIBRARY_BIN%\gmock_dll-mdd.dll
-copy googlemock\Debug\gmockd.lib %LIBRARY_LIB%\gmock_dll-mdd.lib
+copy googlemock\Debug\gmockd.dll %LIBRARY_BIN%\gmockd-mdd.dll
+copy googlemock\Debug\gmockd.lib %LIBRARY_LIB%\gmockd-mdd.lib
 if errorlevel 0 exit 1
 cd %GTEST_DIR%
 
