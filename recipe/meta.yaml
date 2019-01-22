@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1001
+  number: 1002
 
 requirements:
   build:
@@ -21,29 +21,70 @@ requirements:
     - cmake
   host: []  # Empty host dependency section
 
-test:
-  commands:
-    - test -f ${PREFIX}/lib/libgtest.a                      # [unix]
-    - test -f ${PREFIX}/lib/libgtest_main.a                 # [unix]
-    - test -f ${PREFIX}/lib/libgtest${SHLIB_EXT}            # [unix]
-    - test -d ${PREFIX}/include/gtest                       # [unix]
-    - if not exist %LIBRARY_LIB%\gtest.lib exit 1           # [win]
-    - if not exist %LIBRARY_LIB%\gtestd.lib exit 1          # [win]
-    - if not exist %LIBRARY_LIB%\gtest_main.lib exit 1      # [win]
-    - if not exist %LIBRARY_LIB%\gtest_maind.lib exit 1     # [win]
-    - if not exist %LIBRARY_BIN%\gtest_dll.dll exit 1       # [win]
-    - if not exist %LIBRARY_BIN%\gtest_dlld.dll exit 1      # [win]
-    - if not exist %LIBRARY_LIB%\gtest_dll.lib exit 1       # [win]
-    - if not exist %LIBRARY_LIB%\gtest_dlld.lib exit 1      # [win]
-    - if not exist %LIBRARY_LIB%\gtest-md.lib exit 1        # [win]
-    - if not exist %LIBRARY_LIB%\gtest-mdd.lib exit 1       # [win]
-    - if not exist %LIBRARY_LIB%\gtest_main-md.lib exit 1   # [win]
-    - if not exist %LIBRARY_LIB%\gtest_main-mdd.lib exit 1  # [win]
-    - if not exist %LIBRARY_BIN%\gtest_dll-md.dll exit 1    # [win]
-    - if not exist %LIBRARY_BIN%\gtest_dll-mdd.dll exit 1   # [win]
-    - if not exist %LIBRARY_LIB%\gtest_dll-md.lib exit 1    # [win]
-    - if not exist %LIBRARY_LIB%\gtest_dll-mdd.lib exit 1   # [win]
-    - if not exist %LIBRARY_INC%\gtest exit 1               # [win]
+outputs:
+  - name: gtest
+    version: {{ version }}
+    files:
+      -  lib/libgtest*                                          # [unix]
+      -  include/gtest                                          # [unix]
+      -  Library\bin\gtest*                                     # [win]
+      -  Library\lib\gtest*                                     # [win]
+      -  Library\include\gtest                                  # [win]
+    test:
+      commands:
+        - test -f ${PREFIX}/lib/libgtest.a                      # [unix]
+        - test -f ${PREFIX}/lib/libgtest_main.a                 # [unix]
+        - test -f ${PREFIX}/lib/libgtest${SHLIB_EXT}            # [unix]
+        - test -d ${PREFIX}/include/gtest                       # [unix]
+        - if not exist %LIBRARY_LIB%\gtest.lib exit 1           # [win]
+        - if not exist %LIBRARY_LIB%\gtestd.lib exit 1          # [win]
+        - if not exist %LIBRARY_LIB%\gtest_main.lib exit 1      # [win]
+        - if not exist %LIBRARY_LIB%\gtest_maind.lib exit 1     # [win]
+        - if not exist %LIBRARY_BIN%\gtest_dll.dll exit 1       # [win]
+        - if not exist %LIBRARY_BIN%\gtest_dlld.dll exit 1      # [win]
+        - if not exist %LIBRARY_LIB%\gtest_dll.lib exit 1       # [win]
+        - if not exist %LIBRARY_LIB%\gtest_dlld.lib exit 1      # [win]
+        - if not exist %LIBRARY_LIB%\gtest-md.lib exit 1        # [win]
+        - if not exist %LIBRARY_LIB%\gtest-mdd.lib exit 1       # [win]
+        - if not exist %LIBRARY_LIB%\gtest_main-md.lib exit 1   # [win]
+        - if not exist %LIBRARY_LIB%\gtest_main-mdd.lib exit 1  # [win]
+        - if not exist %LIBRARY_BIN%\gtest_dll-md.dll exit 1    # [win]
+        - if not exist %LIBRARY_BIN%\gtest_dll-mdd.dll exit 1   # [win]
+        - if not exist %LIBRARY_LIB%\gtest_dll-md.lib exit 1    # [win]
+        - if not exist %LIBRARY_LIB%\gtest_dll-mdd.lib exit 1   # [win]
+        - if not exist %LIBRARY_INC%\gtest exit 1               # [win]
+
+  - name: gmock
+    version: {{ version }}
+    files:
+      -  include/gmock                                          # [unix]
+      -  lib/libgmock*                                          # [unix]
+      -  Library\bin\gmock*                                     # [win]
+      -  Library\lib\gmock*                                     # [win]
+      -  Library\include\gmock                                  # [win]
+    test:
+      commands:
+        - test -f ${PREFIX}/lib/libgmock.a                      # [unix]
+        - test -f ${PREFIX}/lib/libgmock_main.a                 # [unix]
+        - test -f ${PREFIX}/lib/libgmock${SHLIB_EXT}            # [unix]
+        - test -d ${PREFIX}/include/gmock                       # [unix]
+        - if not exist %LIBRARY_LIB%\gmock.lib exit 1           # [win]
+        - if not exist %LIBRARY_LIB%\gmockd.lib exit 1          # [win]
+        - if not exist %LIBRARY_LIB%\gmock_main.lib exit 1      # [win]
+        - if not exist %LIBRARY_LIB%\gmock_maind.lib exit 1     # [win]
+        - if not exist %LIBRARY_BIN%\gmock.dll exit 1           # [win]
+        - if not exist %LIBRARY_BIN%\gmockd.dll exit 1          # [win]
+        - if not exist %LIBRARY_LIB%\gmock.lib exit 1           # [win]
+        - if not exist %LIBRARY_LIB%\gmockd.lib exit 1          # [win]
+        - if not exist %LIBRARY_LIB%\gmock-md.lib exit 1        # [win]
+        - if not exist %LIBRARY_LIB%\gmock-mdd.lib exit 1       # [win]
+        - if not exist %LIBRARY_LIB%\gmock_main-md.lib exit 1   # [win]
+        - if not exist %LIBRARY_LIB%\gmock_main-mdd.lib exit 1  # [win]
+        - if not exist %LIBRARY_BIN%\gmock-md.dll exit 1        # [win]
+        - if not exist %LIBRARY_LIB%\gmock-md.lib exit 1        # [win]
+        - if not exist %LIBRARY_BIN%\gmockd-mdd.dll exit 1      # [win]
+        - if not exist %LIBRARY_LIB%\gmockd-mdd.lib exit 1      # [win]
+        - if not exist %LIBRARY_INC%\gmock exit 1               # [win]
 
 about:
   home: https://github.com/google/googletest
