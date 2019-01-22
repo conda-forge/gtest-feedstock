@@ -2,8 +2,8 @@
 # -*- mode: jinja -*-
 -->
 
-About gtest/gmock
-=================
+About gtest
+===========
 
 Home: https://github.com/google/googletest
 
@@ -11,7 +11,7 @@ Package license: BSD 3-Clause
 
 Feedstock license: BSD 3-Clause
 
-Summary: Google's C++ test and mock framework
+Summary: Google's C++ test framework
 
 
 
@@ -27,8 +27,8 @@ Current release info
 
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-gtest-green.svg)](https://anaconda.org/conda-forge/gtest) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/gtest.svg)](https://anaconda.org/conda-forge/gtest) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/gtest.svg)](https://anaconda.org/conda-forge/gtest) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/gtest.svg)](https://anaconda.org/conda-forge/gtest) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-gmock-green.svg)](https://anaconda.org/conda-forge/gmock) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/gmock.svg)](https://anaconda.org/conda-forge/gmock) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/gmock.svg)](https://anaconda.org/conda-forge/gmock) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/gmock.svg)](https://anaconda.org/conda-forge/gmock) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-gtest-green.svg)](https://anaconda.org/conda-forge/gtest) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/gtest.svg)](https://anaconda.org/conda-forge/gtest) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/gtest.svg)](https://anaconda.org/conda-forge/gtest) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/gtest.svg)](https://anaconda.org/conda-forge/gtest) |
 
 Installing gtest
 ================
@@ -39,16 +39,16 @@ Installing `gtest` from the `conda-forge` channel can be achieved by adding `con
 conda config --add channels conda-forge
 ```
 
-Once the `conda-forge` channel has been enabled, `gtest` can be installed with:
+Once the `conda-forge` channel has been enabled, `gmock, gtest` can be installed with:
 
 ```
-conda install gtest
+conda install gmock gtest
 ```
 
-It is possible to list all of the versions of `gtest` available on your platform with:
+It is possible to list all of the versions of `gmock` available on your platform with:
 
 ```
-conda search gtest --channel conda-forge
+conda search gmock --channel conda-forge
 ```
 
 
