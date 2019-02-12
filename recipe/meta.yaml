@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1002
+  number: 1003
 
 requirements:
   build:
@@ -24,6 +24,9 @@ requirements:
 outputs:
   - name: gtest
     version: {{ version }}
+    requirements:
+      run_constrained:
+        - gmock {{ version }}
     files:
       -  lib/libgtest*                                          # [unix]
       -  include/gtest                                          # [unix]
@@ -56,6 +59,9 @@ outputs:
 
   - name: gmock
     version: {{ version }}
+    requirements:
+      run_constrained:
+        - gtest {{ version }}
     files:
       -  include/gmock                                          # [unix]
       -  lib/libgmock*                                          # [unix]
