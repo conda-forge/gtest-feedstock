@@ -12,12 +12,12 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1003
+  number: 1004
 
 requirements:
   build:
     - {{ compiler('cxx') }}
-    - python
+    - python 3.6
     - cmake
   host: []  # Empty host dependency section
 
@@ -30,6 +30,7 @@ outputs:
     files:
       -  lib/libgtest*                                          # [unix]
       -  include/gtest                                          # [unix]
+      -  lib/pkgconfig/gtest*.pc                                # [unix]
       -  Library\bin\gtest*                                     # [win]
       -  Library\lib\gtest*                                     # [win]
       -  Library\include\gtest                                  # [win]
@@ -38,6 +39,8 @@ outputs:
         - test -f ${PREFIX}/lib/libgtest.a                      # [unix]
         - test -f ${PREFIX}/lib/libgtest_main.a                 # [unix]
         - test -f ${PREFIX}/lib/libgtest${SHLIB_EXT}            # [unix]
+        - test -f ${PREFIX}/lib/pkgconfig/gtest.pc              # [unix]
+        - test -f ${PREFIX}/lib/pkgconfig/gtest_main.pc         # [unix]
         - test -d ${PREFIX}/include/gtest                       # [unix]
         - if not exist %LIBRARY_LIB%\gtest.lib exit 1           # [win]
         - if not exist %LIBRARY_LIB%\gtestd.lib exit 1          # [win]
@@ -65,6 +68,7 @@ outputs:
     files:
       -  include/gmock                                          # [unix]
       -  lib/libgmock*                                          # [unix]
+      -  lib/pkgconfig/gmock*.pc                                # [unix]
       -  Library\bin\gmock*                                     # [win]
       -  Library\lib\gmock*                                     # [win]
       -  Library\include\gmock                                  # [win]
@@ -73,6 +77,8 @@ outputs:
         - test -f ${PREFIX}/lib/libgmock.a                      # [unix]
         - test -f ${PREFIX}/lib/libgmock_main.a                 # [unix]
         - test -f ${PREFIX}/lib/libgmock${SHLIB_EXT}            # [unix]
+        - test -f ${PREFIX}/lib/pkgconfig/gmock.pc              # [unix]
+        - test -f ${PREFIX}/lib/pkgconfig/gmock_main.pc         # [unix]
         - test -d ${PREFIX}/include/gmock                       # [unix]
         - if not exist %LIBRARY_LIB%\gmock.lib exit 1           # [win]
         - if not exist %LIBRARY_LIB%\gmockd.lib exit 1          # [win]
