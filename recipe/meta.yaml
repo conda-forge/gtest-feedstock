@@ -19,6 +19,7 @@ requirements:
     - {{ compiler('cxx') }}
     - python 3.6
     - cmake
+    - ninja
   host: []  # Empty host dependency section
 
 outputs:
