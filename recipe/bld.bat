@@ -17,7 +17,7 @@ REM Build and copy static libraries (Release)
 mkdir build_static_mt
 cd build_static_mt
 cmake -GNinja -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" %GTEST_DIR%
-cmake --build . --target ALL_BUILD --config Release
+cmake --build . --target install --config Release
 copy googlemock\gtest\Release\gtest.lib %LIBRARY_LIB%
 copy googlemock\gtest\Release\gtest_main.lib %LIBRARY_LIB%
 copy googlemock\Release\gmock.lib %LIBRARY_LIB%
@@ -29,7 +29,7 @@ REM Build and copy static libraries (Debug)
 mkdir build_static_mtd
 cd build_static_mtd
 cmake -GNinja -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" %GTEST_DIR%
-cmake --build . --target ALL_BUILD --config Debug
+cmake --build . --target install --config Debug
 copy googlemock\gtest\Debug\gtestd.lib %LIBRARY_LIB%\gtestd.lib
 copy googlemock\gtest\Debug\gtest_maind.lib %LIBRARY_LIB%\gtest_maind.lib
 copy googlemock\Debug\gmockd.lib %LIBRARY_LIB%\gmockd.lib
@@ -41,7 +41,7 @@ REM Build and copy static libraries with shared run-time library (Release)
 mkdir build_static_md
 cd build_static_md
 cmake -GNinja -D gtest_force_shared_crt=ON -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" %GTEST_DIR%
-cmake --build . --target ALL_BUILD --config Release
+cmake --build . --target install --config Release
 copy googlemock\gtest\Release\gtest.lib %LIBRARY_LIB%\gtest-md.lib
 copy googlemock\gtest\Release\gtest_main.lib %LIBRARY_LIB%\gtest_main-md.lib
 copy googlemock\Release\gmock.lib %LIBRARY_LIB%\gmock-md.lib
@@ -53,7 +53,7 @@ REM Build and copy static libraries with shared run-time library (Debug)
 mkdir build_static_mdd
 cd build_static_mdd
 cmake -GNinja -D gtest_force_shared_crt=ON -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" %GTEST_DIR%
-cmake --build . --target ALL_BUILD --config Debug
+cmake --build . --target install --config Debug
 copy googlemock\gtest\Debug\gtestd.lib %LIBRARY_LIB%\gtest-mdd.lib
 copy googlemock\gtest\Debug\gtest_maind.lib %LIBRARY_LIB%\gtest_main-mdd.lib
 copy googlemock\Debug\gmockd.lib %LIBRARY_LIB%\gmock-mdd.lib
@@ -65,7 +65,7 @@ REM Build and copy dynamic libraries (Release)
 mkdir build_dynamic_mt
 cd build_dynamic_mt
 cmake -GNinja -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -D gtest_build_tests=ON -DBUILD_SHARED_LIBS=ON -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" %GTEST_DIR%
-cmake --build . --target ALL_BUILD --config Release
+cmake --build . --target install --config Release
 copy googlemock\gtest\Release\gtest_dll.dll %LIBRARY_BIN%
 copy googlemock\gtest\Release\gtest_dll.lib %LIBRARY_LIB%
 copy googlemock\Release\gmock.dll %LIBRARY_BIN%
@@ -77,7 +77,7 @@ REM Build and copy dynamic libraries (Debug)
 mkdir build_dynamic_mtd
 cd build_dynamic_mtd
 cmake -GNinja -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -D gtest_build_tests=ON -DBUILD_SHARED_LIBS=ON -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" %GTEST_DIR%
-cmake --build . --target ALL_BUILD --config Debug
+cmake --build . --target install --config Debug
 copy googlemock\gtest\Debug\gtest_dlld.dll %LIBRARY_BIN%\gtest_dlld.dll
 copy googlemock\gtest\Debug\gtest_dlld.lib %LIBRARY_LIB%\gtest_dlld.lib
 copy googlemock\Debug\gmockd.dll %LIBRARY_BIN%
@@ -89,7 +89,7 @@ REM Build and copy dynamic libraries with shared run-time library (Release)
 mkdir build_dynamic_md
 cd build_dynamic_md
 cmake -GNinja -D gtest_force_shared_crt=ON -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -D gtest_build_tests=ON -DBUILD_SHARED_LIBS=ON  -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" %GTEST_DIR%
-cmake --build . --target ALL_BUILD --config Release
+cmake --build . --target install --config Release
 copy googlemock\gtest\Release\gtest_dll.dll %LIBRARY_BIN%\gtest_dll-md.dll
 copy googlemock\gtest\Release\gtest_dll.lib %LIBRARY_LIB%\gtest_dll-md.lib
 copy googlemock\Release\gmock.dll %LIBRARY_BIN%\gmock-md.dll
@@ -101,7 +101,7 @@ REM Build and copy dynamic libraries with shared run-time library (Debug)
 mkdir build_dynamic_mdd
 cd build_dynamic_mdd
 cmake -GNinja -D gtest_force_shared_crt=ON -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -D gtest_build_tests=ON -DBUILD_SHARED_LIBS=ON  -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" %GTEST_DIR%
-cmake --build . --target ALL_BUILD --config Debug
+cmake --build . --target install --config Debug
 copy googlemock\gtest\Debug\gtest_dlld.dll %LIBRARY_BIN%\gtest_dll-mdd.dll
 copy googlemock\gtest\Debug\gtest_dlld.lib %LIBRARY_LIB%\gtest_dll-mdd.lib
 copy googlemock\Debug\gmockd.dll %LIBRARY_BIN%\gmockd-mdd.dll
