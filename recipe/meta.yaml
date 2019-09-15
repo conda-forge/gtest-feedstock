@@ -12,13 +12,15 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1004
+  number: 1005
+  skip: true  # [win and vc<14]
 
 requirements:
   build:
     - {{ compiler('cxx') }}
     - python 3.6
     - cmake
+    - ninja
   host: []  # Empty host dependency section
 
 outputs:
