@@ -1,5 +1,5 @@
-{% set version = "1.8.1" %}
-{% set sha256 = "9bf1fe5182a604b4135edc1a425ae356c9ad15e9b23f9f12a02e80184c3a249c" %}
+{% set version = "1.10.0" %}
+{% set sha256 = "9dc9157a9a1551ec7a7e43daea9a694a0bb5fb8bec81235d8a1e6ef64c716dcb" %}
 
 
 package:
@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1005
+  number: 0
   skip: true  # [win and vc<14]
 
 requirements:
