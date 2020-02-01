@@ -3,6 +3,6 @@ appveyor:
 compiler_stack: comp7
 max_py_ver: '37'
 max_r_ver: '35'
-provider: {win: azure}
+provider: {linux_aarch64: default, linux_ppc64le: default, win: azure}
 travis:
   secure: {BINSTAR_TOKEN: uublo1npd5+IBW9EH5aH4lTi2xWsTmEsza+k33LxQMfofcDq1fXOyK069rrhOL7PVkHxWutlZeqcOxMvRUOVIK0BgRwT0pauQhkTC7kFBdiR6/q+xzbug0JDAKmeqY55T6vknmsSR8XR7aMGHSFuDinj2SdGr+XM6yUyKk1evdqFTO0b7uNHdgvTyNHsG4WoLRDnee9P6dQ0teyEs12tTHa0bACH1wb8/N83R95gIp33gCfJVbqCcA0RHs8qUQtksd5aMVBxhWBjjT9oTDnIZ6WjuToSTB7gUfiugS+QNDE3jeAmJMI/gUY0msuBz7oAFQe6YaCMTm8nK07t0/5HlYCQMrkMxhul39d9LFAjvDsd+4S5GN0fOQzU22b2Audz+twxVWUwT5Qj/Jur/sxYkWyunUY6Rg4axPMBoRvTDKL4IFCsrGCaQv92fEdA1bDow44Dt3Y+1zDc19vvZ/6T92v5bUxeexPHNUYblBeQEsQT5lRxGVHEKFewKUTW/exQw6+GXj0BbLeQnDw0/shXyvSla3nDlk2Acy4FjqNEUhjamo0Cd/9UlgY8/FIxa5K1PjAQ1fketb+QVeLmWlYjwViWGgyyIvLd+jmPE2rdSVAAMLEekp5gZE24VWYJCYYqO+u8/O42J/yE44z+QgeGWcdol1iCOMBMaD0tTSRyvd4=}
