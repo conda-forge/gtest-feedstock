@@ -17,7 +17,7 @@ REM Build and copy static libraries (Release)
 mkdir build_static_mt
 cd build_static_mt
 cmake -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" %GTEST_DIR%
-ninja
+ninja -j1
 copy lib\gtest.lib %LIBRARY_LIB%
 if errorlevel 1 exit 1
 copy lib\gtest_main.lib %LIBRARY_LIB%
@@ -32,7 +32,7 @@ REM Build and copy static libraries (Debug)
 mkdir build_static_mtd
 cd build_static_mtd
 cmake -GNinja -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" %GTEST_DIR%
-ninja
+ninja -j1
 copy lib\gtestd.lib %LIBRARY_LIB%\gtestd.lib
 if errorlevel 1 exit 1
 copy lib\gtest_maind.lib %LIBRARY_LIB%\gtest_maind.lib
@@ -47,7 +47,7 @@ REM Build and copy static libraries with shared run-time library (Release)
 mkdir build_static_md
 cd build_static_md
 cmake -GNinja -DCMAKE_BUILD_TYPE=Release -D gtest_force_shared_crt=ON -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" %GTEST_DIR%
-ninja
+ninja -j1
 copy lib\gtest.lib %LIBRARY_LIB%\gtest-md.lib
 if errorlevel 1 exit 1
 copy lib\gtest_main.lib %LIBRARY_LIB%\gtest_main-md.lib
@@ -62,7 +62,7 @@ REM Build and copy static libraries with shared run-time library (Debug)
 mkdir build_static_mdd
 cd build_static_mdd
 cmake -GNinja -DCMAKE_BUILD_TYPE=Debug -D gtest_force_shared_crt=ON -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" %GTEST_DIR%
-ninja
+ninja -j1
 copy lib\gtestd.lib %LIBRARY_LIB%\gtest-mdd.lib
 if errorlevel 1 exit 1
 copy lib\gtest_maind.lib %LIBRARY_LIB%\gtest_main-mdd.lib
@@ -77,7 +77,7 @@ REM Build and copy dynamic libraries (Release)
 mkdir build_dynamic_mt
 cd build_dynamic_mt
 cmake -GNinja -DCMAKE_BUILD_TYPE=Relase -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -D gtest_build_tests=ON -DBUILD_SHARED_LIBS=ON -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" %GTEST_DIR%
-ninja
+ninja -j1
 copy bin\gtest_dll.dll %LIBRARY_BIN%
 if errorlevel 1 exit 1
 copy lib\gtest_dll.lib %LIBRARY_LIB%
@@ -92,7 +92,7 @@ REM Build and copy dynamic libraries (Debug)
 mkdir build_dynamic_mtd
 cd build_dynamic_mtd
 cmake -GNinja -DCMAKE_BUILD_TYPE=Debug -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -D gtest_build_tests=ON -DBUILD_SHARED_LIBS=ON -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" %GTEST_DIR%
-ninja
+ninja -j1
 copy bin\gtest_dlld.dll %LIBRARY_BIN%\gtest_dlld.dll
 if errorlevel 1 exit 1
 copy lib\gtest_dlld.lib %LIBRARY_LIB%\gtest_dlld.lib
@@ -107,7 +107,7 @@ REM Build and copy dynamic libraries with shared run-time library (Release)
 mkdir build_dynamic_md
 cd build_dynamic_md
 cmake -GNinja -DCMAKE_BUILD_TYPE=Release -D gtest_force_shared_crt=ON -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -D gtest_build_tests=ON -DBUILD_SHARED_LIBS=ON  -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" %GTEST_DIR%
-ninja
+ninja -j1
 copy bin\gtest_dll.dll %LIBRARY_BIN%\gtest_dll-md.dll
 if errorlevel 1 exit 1
 copy lib\gtest_dll.lib %LIBRARY_LIB%\gtest_dll-md.lib
@@ -122,7 +122,7 @@ REM Build and copy dynamic libraries with shared run-time library (Debug)
 mkdir build_dynamic_mdd
 cd build_dynamic_mdd
 cmake -GNinja -DCMAKE_BUILD_TYPE=Debug -D gtest_force_shared_crt=ON -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -D gtest_build_tests=ON -DBUILD_SHARED_LIBS=ON  -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" %GTEST_DIR%
-ninja
+ninja -j1
 copy bin\gtest_dlld.dll %LIBRARY_BIN%\gtest_dll-mdd.dll
 if errorlevel 1 exit 1
 copy lib\gtest_dlld.lib %LIBRARY_LIB%\gtest_dll-mdd.lib
