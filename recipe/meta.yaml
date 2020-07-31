@@ -37,7 +37,6 @@ outputs:
       -  Library\bin\gtest*                                     # [win]
       -  Library\lib\gtest*                                     # [win]
       -  Library\include\gtest                                  # [win]
-      -  Library\lib\cmake\GTest                                # [win]
     test:
       commands:
         - test ! -f ${PREFIX}/lib/libgtest.a                    # [unix]
@@ -77,7 +76,6 @@ outputs:
       -  Library\bin\gmock*                                     # [win]
       -  Library\lib\gmock*                                     # [win]
       -  Library\include\gmock                                  # [win]
-      -  Library\lib\cmake\GTest                                # [win]
     test:
       commands:
         - test ! -f ${PREFIX}/lib/libgmock.a                    # [unix]
