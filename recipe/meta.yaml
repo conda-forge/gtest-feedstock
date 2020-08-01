@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 3
+  number: 4
   skip: true  # [win and vc<14]
 
 requirements:
@@ -33,13 +33,14 @@ outputs:
       -  lib/libgtest*                                          # [unix]
       -  include/gtest                                          # [unix]
       -  lib/pkgconfig/gtest*.pc                                # [unix]
+      -  lib/cmake/GTest                                        # [unix]
       -  Library\bin\gtest*                                     # [win]
       -  Library\lib\gtest*                                     # [win]
       -  Library\include\gtest                                  # [win]
     test:
       commands:
-        - test ! -f ${PREFIX}/lib/libgtest.a                      # [unix]
-        - test ! -f ${PREFIX}/lib/libgtest_main.a                 # [unix]
+        - test ! -f ${PREFIX}/lib/libgtest.a                    # [unix]
+        - test ! -f ${PREFIX}/lib/libgtest_main.a               # [unix]
         - test -f ${PREFIX}/lib/libgtest${SHLIB_EXT}            # [unix]
         - test -f ${PREFIX}/lib/pkgconfig/gtest.pc              # [unix]
         - test -f ${PREFIX}/lib/pkgconfig/gtest_main.pc         # [unix]
@@ -71,13 +72,14 @@ outputs:
       -  include/gmock                                          # [unix]
       -  lib/libgmock*                                          # [unix]
       -  lib/pkgconfig/gmock*.pc                                # [unix]
+      -  lib/cmake/GTest                                        # [unix]
       -  Library\bin\gmock*                                     # [win]
       -  Library\lib\gmock*                                     # [win]
       -  Library\include\gmock                                  # [win]
     test:
       commands:
-        - test ! -f ${PREFIX}/lib/libgmock.a                      # [unix]
-        - test ! -f ${PREFIX}/lib/libgmock_main.a                 # [unix]
+        - test ! -f ${PREFIX}/lib/libgmock.a                    # [unix]
+        - test ! -f ${PREFIX}/lib/libgmock_main.a               # [unix]
         - test -f ${PREFIX}/lib/libgmock${SHLIB_EXT}            # [unix]
         - test -f ${PREFIX}/lib/pkgconfig/gmock.pc              # [unix]
         - test -f ${PREFIX}/lib/pkgconfig/gmock_main.pc         # [unix]
