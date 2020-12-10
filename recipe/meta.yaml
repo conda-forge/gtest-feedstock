@@ -1,5 +1,4 @@
 {% set version = "1.10.0" %}
-{% set sha256 = "9dc9157a9a1551ec7a7e43daea9a694a0bb5fb8bec81235d8a1e6ef64c716dcb" %}
 
 
 package:
@@ -7,18 +6,16 @@ package:
   version: {{ version }}
 
 source:
-  fn: release-{{ version }}.tar.gz
   url: https://github.com/google/googletest/archive/release-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  sha256: 9dc9157a9a1551ec7a7e43daea9a694a0bb5fb8bec81235d8a1e6ef64c716dcb
 
 build:
-  number: 4
-  skip: true  # [win and vc<14]
+  number: 5
 
 requirements:
   build:
     - {{ compiler('cxx') }}
-    - python 3.6
+    - python 3.9
     - cmake
     - ninja
   host: []  # Empty host dependency section
@@ -104,7 +101,7 @@ outputs:
 
 about:
   home: https://github.com/google/googletest
-  license: BSD 3-Clause
+  license: BSD-3-Clause
   license_family: BSD
   license_file: googletest/LICENSE
   summary: Google's C++ test framework

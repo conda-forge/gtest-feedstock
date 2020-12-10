@@ -1,11 +1,13 @@
 #!/bin/bash
 
-GTEST_DIR=$SRC_DIR
-GTEST_CXXFLAGS="-fPIC"
-
 # Build and install dynamic library
 mkdir build
 cd build
-cmake ${CMAKE_ARGS} -GNinja -DCMAKE_CXX_FLAGS=${GTEST_CXXFLAGS} -DCMAKE_INSTALL_PREFIX=$PREFIX -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_BUILD_TYPE=Release $GTEST_DIR
+cmake ${CMAKE_ARGS} \
+  -GNinja \
+  -DCMAKE_INSTALL_PREFIX=$PREFIX \
+  -DBUILD_SHARED_LIBS=ON \
+  -DCMAKE_INSTALL_LIBDIR=lib \
+  -DCMAKE_BUILD_TYPE=Release \
+  ..
 ninja install
-cd $GTEST_DIR
