@@ -24,6 +24,7 @@ conda activate base
 
 echo -e "\n\nInstalling conda-forge-ci-setup=3 and conda-build."
 conda install -n base --quiet --yes "conda-forge-ci-setup=3" conda-build pip
+python -m pip install git+https://github.com/conda/conda-build.git@master
 
 
 
