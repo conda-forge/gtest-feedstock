@@ -3,7 +3,7 @@ About gtest
 
 Home: https://github.com/google/googletest
 
-Package license: BSD 3-Clause
+Package license: BSD-3-Clause
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/gtest-feedstock/blob/master/LICENSE.txt)
 
