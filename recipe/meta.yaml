@@ -24,6 +24,11 @@ outputs:
   - name: gtest
     version: {{ version }}
     requirements:
+      build:
+        - {{ compiler('cxx') }}
+        - python 3.9
+        - cmake
+        - ninja
       run_constrained:
         - gmock {{ version }}
     files:
@@ -63,6 +68,11 @@ outputs:
   - name: gmock
     version: {{ version }}
     requirements:
+      build:
+        - {{ compiler('cxx') }}
+        - python 3.9
+        - cmake
+        - ninja
       run_constrained:
         - gtest {{ version }}
     files:
