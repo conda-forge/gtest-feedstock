@@ -1,4 +1,4 @@
-{% set version = "1.10.0" %}
+{% set version = "1.11.0" %}
 
 
 package:
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://github.com/google/googletest/archive/release-{{ version }}.tar.gz
-  sha256: 9dc9157a9a1551ec7a7e43daea9a694a0bb5fb8bec81235d8a1e6ef64c716dcb
+  sha256: b4870bf121ff7795ba20d20bcdd8627b8e088f2d1dab299a031c1034eddc93d5
 
 build:
-  number: 7
+  number: 0
 
 requirements:
   build:
@@ -32,13 +32,13 @@ outputs:
       run_constrained:
         - gmock {{ version }}
     files:
-      -  lib/libgtest*                                          # [unix]
-      -  include/gtest                                          # [unix]
-      -  lib/pkgconfig/gtest*.pc                                # [unix]
-      -  lib/cmake/GTest                                        # [unix]
-      -  Library\bin\gtest*                                     # [win]
-      -  Library\lib\gtest*                                     # [win]
-      -  Library\include\gtest                                  # [win]
+      - lib/libgtest*                                           # [unix]
+      - include/gtest                                           # [unix]
+      - lib/pkgconfig/gtest*.pc                                 # [unix]
+      - lib/cmake/GTest                                         # [unix]
+      - Library\bin\gtest*                                      # [win]
+      - Library\lib\gtest*                                      # [win]
+      - Library\include\gtest                                   # [win]
     test:
       commands:
         - test ! -f ${PREFIX}/lib/libgtest.a                    # [unix]
@@ -78,13 +78,13 @@ outputs:
       run:
         - {{ pin_subpackage('gtest', exact=True) }}
     files:
-      -  include/gmock                                          # [unix]
-      -  lib/libgmock*                                          # [unix]
-      -  lib/pkgconfig/gmock*.pc                                # [unix]
-      -  lib/cmake/GTest                                        # [unix]
-      -  Library\bin\gmock*                                     # [win]
-      -  Library\lib\gmock*                                     # [win]
-      -  Library\include\gmock                                  # [win]
+      - include/gmock                                           # [unix]
+      - lib/libgmock*                                           # [unix]
+      - lib/pkgconfig/gmock*.pc                                 # [unix]
+      - lib/cmake/GTest                                         # [unix]
+      - Library\bin\gmock*                                      # [win]
+      - Library\lib\gmock*                                      # [win]
+      - Library\include\gmock                                   # [win]
     test:
       commands:
         - test ! -f ${PREFIX}/lib/libgmock.a                    # [unix]
