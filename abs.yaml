@@ -1,0 +1,5 @@
+aggregate_check: false
+channels:
+  - sfe1ed40
+upload_channels:
+  - sfe1ed40
