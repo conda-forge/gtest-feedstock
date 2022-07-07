@@ -1,5 +1,5 @@
-{% set version = "1.8.0" %}
-{% set sha256 = "58a6f4277ca2bc8565222b3bbd58a177609e9c488e8a72649359ba51450db7d8" %}
+{% set version = "1.11.0" %}
+{% set sha256 = "b4870bf121ff7795ba20d20bcdd8627b8e088f2d1dab299a031c1034eddc93d5" %}
 
 package:
   name: gtest
@@ -11,51 +11,119 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 4
+  number: 0
   detect_binary_files_with_prefix: False # [win]
 
 requirements:
   build:
-    - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-  host:
+    - python 3.9
     - cmake
-    - make  # [unix]
+    - ninja
+  host: []  # Empty host dependency section
 
-test:
+outputs:
+  - name: gtest
+    version: {{ version }}
+    requirements:
+      build:
+        - {{ compiler('cxx') }}
+        - python 3.9
+        - cmake
+        - ninja
+      run_constrained:
+        - gmock {{ version }}
+    files:
+      - lib/libgtest*                                           # [unix]
+      - include/gtest                                           # [unix]
+      - lib/pkgconfig/gtest*.pc                                 # [unix]
+      - lib/cmake/GTest                                         # [unix]
+      - Library\bin\gtest*                                      # [win]
+      - Library\lib\gtest*                                      # [win]
+      - Library\include\gtest                                   # [win]
+    test:
+      commands:
+        - test ! -f ${PREFIX}/lib/libgtest.a                    # [unix]
+        - test ! -f ${PREFIX}/lib/libgtest_main.a               # [unix]
+        - test -f ${PREFIX}/lib/libgtest${SHLIB_EXT}            # [unix]
+        - test -f ${PREFIX}/lib/pkgconfig/gtest.pc              # [unix]
+        - test -f ${PREFIX}/lib/pkgconfig/gtest_main.pc         # [unix]
+        - test -d ${PREFIX}/include/gtest                       # [unix]
+        - if not exist %LIBRARY_LIB%\gtest.lib exit 1           # [win]
+        - if not exist %LIBRARY_LIB%\gtestd.lib exit 1          # [win]
+        - if not exist %LIBRARY_LIB%\gtest_main.lib exit 1      # [win]
+        - if not exist %LIBRARY_LIB%\gtest_maind.lib exit 1     # [win]
+        - if not exist %LIBRARY_BIN%\gtest_dll.dll exit 1       # [win]
+        - if not exist %LIBRARY_BIN%\gtest_dlld.dll exit 1      # [win]
+        - if not exist %LIBRARY_LIB%\gtest_dll.lib exit 1       # [win]
+        - if not exist %LIBRARY_LIB%\gtest_dlld.lib exit 1      # [win]
+        - if not exist %LIBRARY_LIB%\gtest-md.lib exit 1        # [win]
+        - if not exist %LIBRARY_LIB%\gtest-mdd.lib exit 1       # [win]
+        - if not exist %LIBRARY_LIB%\gtest_main-md.lib exit 1   # [win]
+        - if not exist %LIBRARY_LIB%\gtest_main-mdd.lib exit 1  # [win]
+        - if not exist %LIBRARY_BIN%\gtest_dll-md.dll exit 1    # [win]
+        - if not exist %LIBRARY_BIN%\gtest_dll-mdd.dll exit 1   # [win]
+        - if not exist %LIBRARY_LIB%\gtest_dll-md.lib exit 1    # [win]
+        - if not exist %LIBRARY_LIB%\gtest_dll-mdd.lib exit 1   # [win]
+        - if not exist %LIBRARY_INC%\gtest exit 1               # [win]
 
-  commands:
-    - test -f ${PREFIX}/lib/libgtest.a                      # [unix]
-    - test -f ${PREFIX}/lib/libgtest_main.a                 # [unix]
-    - test -d ${PREFIX}/include/gtest                       # [unix]
-    - test -f ${PREFIX}/lib/libgtest_dll.so                 # [linux]
-    - test -f ${PREFIX}/lib/libgtest_dll.dylib              # [osx]
-    - if not exist %LIBRARY_LIB%\gtest.lib exit 1           # [win]
-    - if not exist %LIBRARY_LIB%\gtestd.lib exit 1          # [win]
-    - if not exist %LIBRARY_LIB%\gtest_main.lib exit 1      # [win]
-    - if not exist %LIBRARY_LIB%\gtest_maind.lib exit 1     # [win]
-    - if not exist %LIBRARY_BIN%\gtest_dll.dll exit 1       # [win]
-    - if not exist %LIBRARY_BIN%\gtest_dlld.dll exit 1      # [win]
-    - if not exist %LIBRARY_LIB%\gtest_dll.lib exit 1       # [win]
-    - if not exist %LIBRARY_LIB%\gtest_dlld.lib exit 1      # [win]
-    - if not exist %LIBRARY_LIB%\gtest-md.lib exit 1        # [win]
-    - if not exist %LIBRARY_LIB%\gtest-mdd.lib exit 1       # [win]
-    - if not exist %LIBRARY_LIB%\gtest_main-md.lib exit 1   # [win]
-    - if not exist %LIBRARY_LIB%\gtest_main-mdd.lib exit 1  # [win]
-    - if not exist %LIBRARY_BIN%\gtest_dll-md.dll exit 1    # [win]
-    - if not exist %LIBRARY_BIN%\gtest_dll-mdd.dll exit 1   # [win]
-    - if not exist %LIBRARY_LIB%\gtest_dll-md.lib exit 1    # [win]
-    - if not exist %LIBRARY_LIB%\gtest_dll-mdd.lib exit 1   # [win]
-    - if not exist %LIBRARY_INC%\gtest exit 1               # [win]
+  - name: gmock
+    version: {{ version }}
+    requirements:
+      build:
+        - {{ compiler('cxx') }}
+        - python 3.9
+        - cmake
+        - ninja
+      host:
+        - {{ pin_subpackage('gtest', exact=True) }}
+      run:
+        - {{ pin_subpackage('gtest', exact=True) }}
+    files:
+      - include/gmock                                           # [unix]
+      - lib/libgmock*                                           # [unix]
+      - lib/pkgconfig/gmock*.pc                                 # [unix]
+      - lib/cmake/GTest                                         # [unix]
+      - Library\bin\gmock*                                      # [win]
+      - Library\lib\gmock*                                      # [win]
+      - Library\include\gmock                                   # [win]
+    test:
+      commands:
+        - test ! -f ${PREFIX}/lib/libgmock.a                    # [unix]
+        - test ! -f ${PREFIX}/lib/libgmock_main.a               # [unix]
+        - test -f ${PREFIX}/lib/libgmock${SHLIB_EXT}            # [unix]
+        - test -f ${PREFIX}/lib/pkgconfig/gmock.pc              # [unix]
+        - test -f ${PREFIX}/lib/pkgconfig/gmock_main.pc         # [unix]
+        - test -d ${PREFIX}/include/gmock                       # [unix]
+        - if not exist %LIBRARY_LIB%\gmock.lib exit 1           # [win]
+        - if not exist %LIBRARY_LIB%\gmockd.lib exit 1          # [win]
+        - if not exist %LIBRARY_LIB%\gmock_main.lib exit 1      # [win]
+        - if not exist %LIBRARY_LIB%\gmock_maind.lib exit 1     # [win]
+        - if not exist %LIBRARY_BIN%\gmock.dll exit 1           # [win]
+        - if not exist %LIBRARY_BIN%\gmockd.dll exit 1          # [win]
+        - if not exist %LIBRARY_LIB%\gmock.lib exit 1           # [win]
+        - if not exist %LIBRARY_LIB%\gmockd.lib exit 1          # [win]
+        - if not exist %LIBRARY_LIB%\gmock-md.lib exit 1        # [win]
+        - if not exist %LIBRARY_LIB%\gmock-mdd.lib exit 1       # [win]
+        - if not exist %LIBRARY_LIB%\gmock_main-md.lib exit 1   # [win]
+        - if not exist %LIBRARY_LIB%\gmock_main-mdd.lib exit 1  # [win]
+        - if not exist %LIBRARY_BIN%\gmock-md.dll exit 1        # [win]
+        - if not exist %LIBRARY_LIB%\gmock-md.lib exit 1        # [win]
+        - if not exist %LIBRARY_BIN%\gmockd-mdd.dll exit 1      # [win]
+        - if not exist %LIBRARY_LIB%\gmockd-mdd.lib exit 1      # [win]
+        - if not exist %LIBRARY_INC%\gmock exit 1               # [win]
 
 about:
   home: https://github.com/google/googletest
   license: BSD 3-Clause
   license_family: BSD
-  license_file: googletest/LICENSE
+  license_file: LICENSE
   summary: Google's C++ test framework
 
 extra:
   recipe-maintainers:
     - SylvainCorlay
     - scopatz
+    - wesm
+    - marcelotrevisani
+    - xhochy
