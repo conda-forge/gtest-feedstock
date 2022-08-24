@@ -11,6 +11,9 @@ xcopy /S %GTEST_DIR%\googletest\include %LIBRARY_INC%
 xcopy /S %GTEST_DIR%\googlemock\include %LIBRARY_INC%
 set GMOCK_DIR=googlemock
 
+REM make this a bit more debuggable
+echo on
+
 cd %GTEST_DIR%
 
 REM Build and copy static libraries (Release)
