@@ -100,9 +100,9 @@ copy bin\gtest_dll.dll %LIBRARY_BIN%\gtest_dlld.dll
 if errorlevel 1 exit 1
 copy lib\gtest_dll.lib %LIBRARY_LIB%\gtest_dlld.lib
 if errorlevel 1 exit 1
-copy bin\gmock.dll %LIBRARY_BIN%
+copy bin\gmock.dll %LIBRARY_BIN%\gmockd.dll
 if errorlevel 1 exit 1
-copy lib\gmock.lib %LIBRARY_LIB%
+copy lib\gmock.lib %LIBRARY_LIB%\gmockd.lib
 if errorlevel 1 exit 1
 cd %GTEST_DIR%
 
