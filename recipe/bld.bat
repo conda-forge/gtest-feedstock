@@ -36,13 +36,13 @@ mkdir build_static_mtd
 cd build_static_mtd
 cmake -GNinja -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" %GTEST_DIR%
 ninja -j1
-copy lib\gtestd.lib %LIBRARY_LIB%\gtestd.lib
+copy lib\gtest.lib %LIBRARY_LIB%\gtestd.lib
 if errorlevel 1 exit 1
-copy lib\gtest_maind.lib %LIBRARY_LIB%\gtest_maind.lib
+copy lib\gtest_main.lib %LIBRARY_LIB%\gtest_maind.lib
 if errorlevel 1 exit 1
-copy lib\gmockd.lib %LIBRARY_LIB%\gmockd.lib
+copy lib\gmock.lib %LIBRARY_LIB%\gmockd.lib
 if errorlevel 1 exit 1
-copy lib\gmock_maind.lib %LIBRARY_LIB%\gmock_maind.lib
+copy lib\gmock_main.lib %LIBRARY_LIB%\gmock_maind.lib
 if errorlevel 1 exit 1
 cd %GTEST_DIR%
 
@@ -66,13 +66,13 @@ mkdir build_static_mdd
 cd build_static_mdd
 cmake -GNinja -DCMAKE_BUILD_TYPE=Debug -D gtest_force_shared_crt=ON -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" %GTEST_DIR%
 ninja -j1
-copy lib\gtestd.lib %LIBRARY_LIB%\gtest-mdd.lib
+copy lib\gtest.lib %LIBRARY_LIB%\gtest-mdd.lib
 if errorlevel 1 exit 1
-copy lib\gtest_maind.lib %LIBRARY_LIB%\gtest_main-mdd.lib
+copy lib\gtest_main.lib %LIBRARY_LIB%\gtest_main-mdd.lib
 if errorlevel 1 exit 1
-copy lib\gmockd.lib %LIBRARY_LIB%\gmock-mdd.lib
+copy lib\gmock.lib %LIBRARY_LIB%\gmock-mdd.lib
 if errorlevel 1 exit 1
-copy lib\gmock_maind.lib %LIBRARY_LIB%\gmock_main-mdd.lib
+copy lib\gmock_main.lib %LIBRARY_LIB%\gmock_main-mdd.lib
 if errorlevel 1 exit 1
 cd %GTEST_DIR%
 
@@ -96,13 +96,13 @@ mkdir build_dynamic_mtd
 cd build_dynamic_mtd
 cmake -GNinja -DCMAKE_BUILD_TYPE=Debug -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -D gtest_build_tests=ON -DBUILD_SHARED_LIBS=ON -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" %GTEST_DIR%
 ninja -j1
-copy bin\gtest_dlld.dll %LIBRARY_BIN%\gtest_dlld.dll
+copy bin\gtest_dll.dll %LIBRARY_BIN%\gtest_dlld.dll
 if errorlevel 1 exit 1
-copy lib\gtest_dlld.lib %LIBRARY_LIB%\gtest_dlld.lib
+copy lib\gtest_dll.lib %LIBRARY_LIB%\gtest_dlld.lib
 if errorlevel 1 exit 1
-copy bin\gmockd.dll %LIBRARY_BIN%
+copy bin\gmock.dll %LIBRARY_BIN%
 if errorlevel 1 exit 1
-copy lib\gmockd.lib %LIBRARY_LIB%
+copy lib\gmock.lib %LIBRARY_LIB%
 if errorlevel 1 exit 1
 cd %GTEST_DIR%
 
@@ -126,13 +126,13 @@ mkdir build_dynamic_mdd
 cd build_dynamic_mdd
 cmake -GNinja -DCMAKE_BUILD_TYPE=Debug -D gtest_force_shared_crt=ON -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% -D gtest_build_tests=ON -DBUILD_SHARED_LIBS=ON  -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" %GTEST_DIR%
 ninja -j1
-copy bin\gtest_dlld.dll %LIBRARY_BIN%\gtest_dll-mdd.dll
+copy bin\gtest_dll.dll %LIBRARY_BIN%\gtest_dll-mdd.dll
 if errorlevel 1 exit 1
-copy lib\gtest_dlld.lib %LIBRARY_LIB%\gtest_dll-mdd.lib
+copy lib\gtest_dll.lib %LIBRARY_LIB%\gtest_dll-mdd.lib
 if errorlevel 1 exit 1
-copy bin\gmockd.dll %LIBRARY_BIN%\gmockd-mdd.dll
+copy bin\gmock.dll %LIBRARY_BIN%\gmockd-mdd.dll
 if errorlevel 1 exit 1
-copy lib\gmockd.lib %LIBRARY_LIB%\gmockd-mdd.lib
+copy lib\gmock.lib %LIBRARY_LIB%\gmockd-mdd.lib
 if errorlevel 1 exit 1
 cd %GTEST_DIR%
 
