@@ -1,11 +1,11 @@
-About gtest
-===========
+About gtest-feedstock
+=====================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/gtest-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/google/googletest
 
 Package license: BSD-3-Clause
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/gtest-feedstock/blob/main/LICENSE.txt)
 
 Summary: Google's C++ test framework
 
@@ -206,6 +206,7 @@ Feedstock Maintainers
 =====================
 
 * [@SylvainCorlay](https://github.com/SylvainCorlay/)
+* [@h-vetinari](https://github.com/h-vetinari/)
 * [@marcelotrevisani](https://github.com/marcelotrevisani/)
 * [@scopatz](https://github.com/scopatz/)
 * [@wesm](https://github.com/wesm/)
