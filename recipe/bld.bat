@@ -1,11 +1,5 @@
 set GTEST_DIR=%SRC_DIR%
-REM gmock headers have a warning that doesnt exist in Visual Studio 2008
-REM and maintainers don't want to support older version
-REM (https://github.com/google/googletest/issues/1848)
-if NOT "%VS_YEAR%" == "2008" GOTO NO_EDIT
-powershell -Command "(gc googlemock/include/gmock/gmock-matchers.h) -replace '4251 5046', '4251' | Out-File googlemock/include/gmock/gmock-matchers.h"
 
-:NO_EDIT
 REM Copy headers
 xcopy /S %GTEST_DIR%\googletest\include %LIBRARY_INC%
 xcopy /S %GTEST_DIR%\googlemock\include %LIBRARY_INC%
