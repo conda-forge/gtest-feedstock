@@ -2,7 +2,7 @@
 
 
 package:
-  name: gtest
+  name: gtest-split
   version: {{ version }}
 
 source:
@@ -79,3 +79,4 @@ extra:
     - wesm
     - marcelotrevisani
     - xhochy
+  feedstock-name: gtest
