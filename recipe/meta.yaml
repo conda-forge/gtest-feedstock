@@ -15,7 +15,6 @@ build:
 requirements:
   build:
     - {{ compiler('cxx') }}
-    - python 3.9
     - cmake
     - ninja
   host: []  # Empty host dependency section
@@ -26,7 +25,6 @@ outputs:
     requirements:
       build:
         - {{ compiler('cxx') }}
-        - python 3.9
         - cmake
         - ninja
       run_constrained:
