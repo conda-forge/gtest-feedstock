@@ -21,6 +21,8 @@ requirements:
 
 outputs:
   - name: gtest
+    script: build-gtest.sh   # [unix]
+    script: build-gtest.bat  # [win]
     version: {{ version }}
     requirements:
       build:
