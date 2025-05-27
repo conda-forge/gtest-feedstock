@@ -4,8 +4,6 @@ build_platform:
   osx_arm64: osx_64
   win_arm64: win_64
 conda_forge_output_validation: true
-azure:
-  store_build_artifacts: true
 github:
   branch_name: main
   tooling_branch_name: main
