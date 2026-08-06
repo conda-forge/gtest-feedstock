@@ -41,11 +41,11 @@ outputs:
               - for lib in gtest gtest_main gmock gmock_main; do pkg-config --print-errors --exact-version "$PKG_VERSION" "$lib"; done
           - if: win
             then:
-              - for %L in (gtest gtest_main gmock gmock_main) do @if not exist %LIBRARY_BIN%\%L.dll exit 1
-              - for %L in (gtest gtest_main gmock gmock_main) do @if not exist %LIBRARY_LIB%\%L.lib exit 1
+              - for %%L in (gtest gtest_main gmock gmock_main) do @if not exist %LIBRARY_BIN%\%%L.dll exit 1
+              - for %%L in (gtest gtest_main gmock gmock_main) do @if not exist %LIBRARY_LIB%\%%L.lib exit 1
               - if not exist %LIBRARY_INC%\gtest\gtest.h exit 1
               - if not exist %LIBRARY_INC%\gmock\gmock.h exit 1
-              - for %L in (gtest gtest_main gmock gmock_main) do @pkg-config --print-errors --exact-version "%PKG_VERSION%" %L
+              - for %%L in (gtest gtest_main gmock gmock_main) do @pkg-config --print-errors --exact-version "%PKG_VERSION%" %%L
         requirements:
           run:
             - if: target_platform != "linux-riscv64"
