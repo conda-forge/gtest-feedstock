@@ -19,7 +19,7 @@ outputs:
       name: gtest
     build:
       script:
-        file: ${{ "build-gtest.sh" if unix else "build-gtest.bat" }}
+        file: build-gtest
     requirements:
       build:
         - ${{ compiler('cxx') }}
@@ -31,25 +31,40 @@ outputs:
       run_constraints:
         - gmock ==${{ version }}
     tests:
-      - script:
-          - if: unix
-            then:
-              - for lib in gtest gtest_main gmock gmock_main; do test -f "$PREFIX/lib/lib${lib}${SHLIB_EXT}" && test ! -f "$PREFIX/lib/lib${lib}.a"; done
-              - for header in gtest/gtest.h gmock/gmock.h; do test -f "$PREFIX/include/${header}"; done
-          - if: unix and target_platform != "linux-riscv64"
-            then:
-              - for lib in gtest gtest_main gmock gmock_main; do pkg-config --print-errors --exact-version "$PKG_VERSION" "$lib"; done
-          - if: win
-            then:
-              - for %%L in (gtest gtest_main gmock gmock_main) do @if not exist %LIBRARY_BIN%\%%L.dll exit 1
-              - for %%L in (gtest gtest_main gmock gmock_main) do @if not exist %LIBRARY_LIB%\%%L.lib exit 1
-              - if not exist %LIBRARY_INC%\gtest\gtest.h exit 1
-              - if not exist %LIBRARY_INC%\gmock\gmock.h exit 1
-              - for %%L in (gtest gtest_main gmock gmock_main) do @pkg-config --print-errors --exact-version "%PKG_VERSION%" %%L
-        requirements:
-          run:
-            - if: target_platform != "linux-riscv64"
-              then: pkg-config
+      - package_contents:
+          include:
+            - gtest/gtest.h
+            - gmock/gmock.h
+          lib:
+            - gtest
+            - gtest_main
+            - gmock
+            - gmock_main
+          files:
+            not_exists:
+              - if: unix
+                then:
+                  - lib/libgtest.a
+                  - lib/libgtest_main.a
+                  - lib/libgmock.a
+                  - lib/libgmock_main.a
+      - if: unix and target_platform != "linux-riscv64"
+        then:
+          script:
+            - for lib in gtest gtest_main gmock gmock_main; do pkg-config --print-errors --exact-version "$PKG_VERSION" "$lib"; done
+          requirements:
+            run:
+              - pkg-config
+      - if: win
+        then:
+          script:
+            - pkg-config --print-errors --exact-version "%PKG_VERSION%" gtest
+            - pkg-config --print-errors --exact-version "%PKG_VERSION%" gtest_main
+            - pkg-config --print-errors --exact-version "%PKG_VERSION%" gmock
+            - pkg-config --print-errors --exact-version "%PKG_VERSION%" gmock_main
+          requirements:
+            run:
+              - pkg-config
 
   # Empty wrapper for compatibility with the previous output separation.
   - package:
