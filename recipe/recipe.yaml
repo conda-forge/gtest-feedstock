@@ -12,7 +12,7 @@ source:
   sha256: 6e3191c1455468b3fc35a417fb565c1c5071aee1b7e7f85e30cf48a98d37d8b5
 
 build:
-  number: 0
+  number: 1
 
 outputs:
   - package:
@@ -48,23 +48,18 @@ outputs:
                   - lib/libgtest_main.a
                   - lib/libgmock.a
                   - lib/libgmock_main.a
-      - if: unix and target_platform != "linux-riscv64"
-        then:
-          script:
-            - for lib in gtest gtest_main gmock gmock_main; do pkg-config --print-errors --exact-version "$PKG_VERSION" "$lib"; done
-          requirements:
-            run:
-              - pkg-config
-      - if: win
-        then:
-          script:
-            - pkg-config --print-errors --exact-version "%PKG_VERSION%" gtest
-            - pkg-config --print-errors --exact-version "%PKG_VERSION%" gtest_main
-            - pkg-config --print-errors --exact-version "%PKG_VERSION%" gmock
-            - pkg-config --print-errors --exact-version "%PKG_VERSION%" gmock_main
-          requirements:
-            run:
-              - pkg-config
+      - requirements:
+          run:
+            - pkg-config
+        script:
+          - if: unix
+            then:
+              - for lib in gtest gtest_main gmock gmock_main; do pkg-config --print-errors --exact-version "$PKG_VERSION" "$lib"; done
+            else:
+              - pkg-config --print-errors --exact-version "%PKG_VERSION%" gtest
+              - pkg-config --print-errors --exact-version "%PKG_VERSION%" gtest_main
+              - pkg-config --print-errors --exact-version "%PKG_VERSION%" gmock
+              - pkg-config --print-errors --exact-version "%PKG_VERSION%" gmock_main
 
   # Empty wrapper for compatibility with the previous output separation.
   - package:
